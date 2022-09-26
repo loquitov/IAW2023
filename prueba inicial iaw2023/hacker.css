@@ -1,6 +1,87 @@
 
-/*
-Este es un comentario simplemente para para que ocupe algo de espacio
+.fondo {
+  background-image: url(./matrix.jpg);
+  margin-top: 40px;
+  background-repeat: no-repeat;
+  background-position: center;
+  position: static;
+}
 
+.primer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-*/
+.segundo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+h1 {
+  color: #ebe8db;
+  font-family: Impact;
+  font-size: 28px;
+  text-align: center;
+}
+
+p {
+  color: blanchedalmond;
+  font-size: 14px;
+  font-family: monospace;
+  text-align: justify;
+  text-indent: 20px;
+  font-weight: bold;
+}
+
+h2 {
+  font-family: arial;
+  text-decoration: none;
+  color: #0a9b3a;
+  font-weight: bold;
+  text-align: center;
+}
+
+a {
+  margin: 1em;
+  display: block;
+}
+
+.simple {
+  text-decoration: none;
+  color: #0a9b3a;
+}
+
+img {
+  width: 180px;
+  float: right;
+  margin-left: 30px;
+  border-radius: 20px;
+}
+
+p::first-letter {
+  font-size: 34px;
+  font-weight: bold;
+  color: #0a9b3a;
+}
+
+.primer div {
+  background-color: black;
+  height: 340px;
+  width: 70%;
+  padding: 35px;
+  border-radius: 20px;
+  box-shadow: 10px 5px 5px grey;
+  margin-top: 50px;
+}
+
+.segundo div {
+  background-color: black;
+  height: 400px;
+  width: 70%;
+  padding: 35px;
+  border-radius: 20px;
+  box-shadow: 10px 5px 5px grey;
+  margin-top: 50px;
+}
