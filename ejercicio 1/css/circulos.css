@@ -1,0 +1,41 @@
+#verde {
+  width: 100px;
+  height: 100px;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  text-align: center;
+  position: fixed;
+  margin-left: 45%;
+  margin-top: 80px;
+  margin-right: 80px;
+  background-color: green;
+}
+
+#rojo {
+  width: 100px;
+  height: 100px;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  position: fixed;
+  margin-left: 35%;
+  margin-top: 80px;
+  margin-right: 80px;
+  text-align: center;
+  background-color: red;
+}
+
+#azul {
+  width: 100px;
+  height: 100px;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  text-align: center;
+  position: fixed;
+  margin-left: 55%;
+  margin-top: 80px;
+  margin-right: 80px;
+  background-color: blue;
+}

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>cambio moneda</title>
+
+  <script src="../javascript/conversion.js"></script>
+</head>
+
+
+<body onload="actualizar()">
+  
+  <form name="calcula">
+
+    <input type="text" name="total" value="1" />
+    <select name="moneda" onChange="actualizar()" onFocus="actualizar">
+      <option value="0.99">Dolar Americano</option>
+      <option value="1">Euro</option>
+
+    </select>
+    <span>corresponde a</span>
+
+    <input name="euro" size="10" readonly="true" />
+    <span>Valor de moneda</span>
+    <input name="cambio" size="10" readonly="true" />
+    <br />
+    <input type=button value="Actualizar" onclick="actualizar()" />
+
+  </form>
+</body>
+
+
+</html>
