@@ -24,7 +24,13 @@
     <button>Ver val()</button>
     <script>
        /* Incluye aquí el código jQuery */
-        
+        $(document).ready(function(){
+            $("button").click(function (e){
+                alert($("input").val());
+            });
+
+
+        });
     </script>
 </body>
 </html>
