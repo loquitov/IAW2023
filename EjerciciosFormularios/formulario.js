@@ -23,11 +23,11 @@ function Enviar(evento) {
       let campo2 = "campo" + contador2;
       document.getElementById(campo2).innerHTML =
         "Falta el campo" + [contador2].name;
-      contador2++;
+    
       faltarellenar = true;
-    } else {
-      contador2++;
-    }
+    }  
+    contador2++;
+    
     if (!faltarellenar) {
       let password = document.getElementById("password").value;
       let password2 = document.getElementById("password2").value;
@@ -82,17 +82,18 @@ function Enviar(evento) {
             let checkbox = document.getElementById("terminos");
             if (checkbox.checked == false) {
               alert("Los terminos no han sido aceptado");
-            } else {
+            } 
+if(faltarellenar==false){
               let usuario;
-              let nombre = requerido[0].value;
-              let letraNombre = nombre.substr(0, 1);
+              let nombre2 = requerido[0].value;
+              let letraNombre = nombre2.substr(0, 1);
 
               let apellidos = requerido[1].value;
               let letrasApellido = apellidos.substr(0, 3);
 
               let tresNumeros = numerosDNI.substr(5, 8);
 
-              let usuario1 = nombre.concat(letraNombre);
+              let usuario1 = letraNombre;
               let usuario2 = usuario1.concat(letrasApellido);
               usuario = usuario2.concat(tresNumeros);
 
