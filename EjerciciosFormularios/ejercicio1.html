@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
   <meta charset="UTF-8">
@@ -7,15 +7,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>VALIDACIÓN DE FORMULARIO</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-  <script src="formulario.js"></script>
+  <script src="ejercicio1.js"></script>
   <style>
     input {
-      margin-bottom: 5px;
-      margin-left: 10px;
+      margin-bottom: 10px;
+      margin-left: 15px;
     }
 
     #usuario {
-      margin-top: 3px;
+      margin-top: 5px;
     }
   </style>
 </head>
@@ -23,37 +23,41 @@
 <body>
   <form action="" id="formulario">
     <label for="">Nombre*</label>
-    <input type="text" id="nombre" name="Nombre" placeholder="Escribe tu nombre"><span id="campo0"></span>
+    <input type="text" id="nombre" name="Nombre" placeholder="Escribe tu nombre"><span id="info0"></span>
 
     <br>
 
     <label for="">Primer Apellido*</label>
-    <input type="text" id="primerApellido" name="Primero apellido" placeholder="Escribe tu Primer Apellido"><span id="campo1"></span>
+    <input type="text" id="primerApellido" name="Primero apellido" placeholder="Escribe tu Primer Apellido"><span
+      id="info1"></span>
 
     <br>
 
     <label for="">Segundo Apellido*</label>
-    <input type="text" id="segundoApellido" name="Segundo apellido" placeholder="Escribe tu segundo apellido"><span id="campo2"></span>
+    <input type="text" id="segundoApellido" name="Segundo apellido" placeholder="Escribe tu Segundo Apellido"><span
+      id="info2"></span>
 
     <br>
 
     <label for="">DNI*</label>
-    <input type="text" id="DNI" name="DNI" placeholder="Escribe tu dni"><span id="campo3"></span>
+    <input type="text" id="DNI" name="DNI" placeholder="Escribe tu DNI" maxlength="9"><span id="info3"></span>
 
     <br>
 
     <label for="">Email*</label>
-    <input type="email" id="email" name="Email" placeholder="Escribe tu direccion de email"><span id="campo4"></span>
+    <input type="email" id="email" name="Email" placeholder="EScribe tu email"><span id="info4"></span>
 
     <br>
 
     <label for="">Contraseña*</label>
-    <input type="password" id="password" name="password" placeholder="Pon tu contraseña"><span id="campo5"></span>
+    <input type="password" id="password" name="Contraseña" placeholder="Escribe tu contraseña" maxlength="8"><span
+      id="info5"></span>
 
     <br>
 
     <label for="">Confirmar contraseña*</label>
-    <input type="password" id="password2" name="password2" placeholder="Pon de nuevo tu contraseña"><span id="campo6"></span>
+    <input type="password" id="password2" name="Confirmación de la contrasena"
+      placeholder="Vuelva a escribir la contraseña" maxlength="8"><span id="info6"></span>
 
     <br>
 
