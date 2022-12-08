@@ -43,7 +43,13 @@
     input[type="text"] {
       font-size: 1em;
       text-align: center;
+      width: 35%;
+    }
+
+    button {
       width: 20%;
+      font-size: 1em;
+      text-align: center;
     }
   </style>
 </head>
@@ -58,9 +64,9 @@
       <label for="doble">Habitación doble (45€)</label><br>
       <input min="0" type="number" name="triple" id="triples" value="0">
       <label for="triple">Habitación triple (80€)</label><br>
-      <input class="datepicker" type="text" name="entrada" id="f_inicial">
+      <input class="datepicker" type="text" name="entrada" id="f_inicial" placeholder=" Elija fecha entrada">
       <label for="entrada">Entrada</label><br>
-      <input class="datepicker" type="text" name="salida" id="f_final">
+      <input class="datepicker" type="text" name="salida" placeholder=" Elija fecha salida" id="f_final">
       <label for="salida">Salida</label><br>
       <button id="calculo">Cálculo</button>
       <p id="totalDias">Total días: </p>

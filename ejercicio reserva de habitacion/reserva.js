@@ -1,4 +1,5 @@
 /* Ponemos los selectores de fecha en español */
+
 $.datepicker.regional["es"] = {
   closeText: "Cerrar",
   prevText: "<Ant",
@@ -52,8 +53,15 @@ $.datepicker.regional["es"] = {
 };
 $.datepicker.setDefaults($.datepicker.regional["es"]);
 $(document).ready(function () {
-  $("#f_inicial").datepicker({ minDate: 1, maxDate: "+1Y" });
-  $("#f_final").datepicker({ minDate: 2, maxDate: "+1Y+1D" });
+  $("#f_inicial").datepicker({
+    minDate: 1,
+    maxDate: "+1Y",
+  });
+  $("#f_final").datepicker({
+    minDate: 2,
+    maxDate: "+1Y + 1D",
+  });
+
   $("#calculo").click(function (e) {
     e.preventDefault();
     let i = $("#individuales").val();
