@@ -73,7 +73,60 @@
       <p id="totalPrecio">Precio: </p>
     </form>
   </div>
-  <script src="reserva.js">
+  <script>
+    $.datapicker.regional["es"] = {
+      closeText: "Cerrar",
+      prevText: "<Ant",
+      nextText: "Sig>",
+      currentText: "Hoy",
+      monthsNames: ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"],
+      monthsNamesShort: ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"],
+      daysNames: ["Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado", "Domingo"],
+      daysNamesMin: ["Lun", "Mar", "Mie", "Jue", "Vir", "Sab", "Dom"],
+      daysNamesShort: ["Lu", "Ma", "Mi", "Ju", "Vi", "Sa", "Do"],
+      weekHeader: "Sm",
+      dateFormat: "dd/mm/yy",
+      firstDay: 1,
+      isRTL: false,
+      showMonthAfterYear: false,
+      yearSuffix: "",
+    };
+
+    $.datepicker.setDefaults($.datapicker.regional["es"]);
+    $(document).ready(function () {
+      $("#f_inicial").datapicker({
+        minDate: 1,
+        maxDate: "+1Y",
+      });
+
+      $("f_final").datapicker({
+        MinDate: 2,
+        MaxDate: "+1Y + 1D",
+      });
+
+
+      $("#calculo").click(function (e) {
+        e.preventDefault();
+        let i = $("#individuales").val();
+        let d = $("#dobles").val();
+        let t = $("#triples").val();
+        let desde = $("#f_inicial").datapicker("getDate");
+        let hasta = $("#f_final").datapicker("getDate");
+        let diff = new Date(hasta - desde);
+        let dias = diff / 1000 / 60 / 60 / 24;
+        let pdias = dias * i * 25 + dias * d * 45 + dias * t * 80;
+
+        if (diff < 0 || pdias < 0) {
+          $("#totalDias").html("Total días: 0");
+          $("#totalPrecio").html("Precio: 0 €");
+          return;
+        } else {
+          $("#totalDias").html("Estaras" + dias + "dias")
+          $(" #totalPrecio").html("Total precio:" + pdias + "€")
+
+        }
+      });
+    });
 
 
   </script>

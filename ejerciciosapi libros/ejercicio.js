@@ -1,5 +1,6 @@
 function Muestra_todo() {
   let contador = 0;
+  $("#contenido").empty();
   while (contador < 32) {
     $.get("https://gutendex.com/books/" + contador, function (data) {
       let libro = data;
@@ -13,7 +14,7 @@ function Muestra_todo() {
       let descargas = $("<p></p>").text(
         "Numero de descargas: " + libro.download_count
       );
-      $("body").append(titulo, autor, imagen, enlace, descargas);
+      $("#contenido").append(titulo, autor, imagen, enlace, descargas);
     });
     contador++;
   }
@@ -21,6 +22,7 @@ function Muestra_todo() {
 
 function Muestra_libro() {
   let id = document.getElementById("numero_libro").value;
+   $("#contenido").empty();
   if (id < 0 || id > 32) {
     alert("El id que has introducido no corresponde a ningun libro (1-32)");
     return;
@@ -37,7 +39,7 @@ function Muestra_libro() {
       let descargas = $("<p>Numero de Descargas</p>").text(
         "Numero de descargas: " + libro.download_count
       );
-      $("body").append(titulo, autor, imagen, enlace, descargas);
+      $("#contenido").append(titulo, autor, imagen, enlace, descargas);
     });
   }
 }
