@@ -19,19 +19,19 @@
 </form>
 <?php
 $bruto = $_POST['bruto'];
-$casilla = $_POST['casilla'];
+$casilla = $_POST['casilla'];//Recoge los valores de esas variables
 
 if ($bruto <= 0) {
   echo "El sueldo bruto que ha introducido no es valido";
-}
+}// en caso de que no pongas valor se devuelve el siguiente mensaje de error
 elseif ($bruto < 10000) {
     echo "El tipo impositivo que te corresponde es del 5% <br>";
-    $neto = $bruto * 0.05;
+    $neto = $bruto * 0.05;//en caso estar dentro de este rango calcula el neto que le corresponde
     if ($casilla=="marcada") {
       $netoreducido = $neto * 0.98; 
-      echo "Debera abonar la cantidad de" . $netoreducido . "€.";
+      echo "Debera abonar la cantidad de" .  $netoreducido . "€.";
     }else {
-      echo "Debera abonar la cantidad de" . $neto . "€.";
+      echo "Debera abonar la cantidad de" .  $neto . "€.";
     }
 }
 elseif ($bruto >= 10000 && $bruto < 20000) {
@@ -39,9 +39,9 @@ elseif ($bruto >= 10000 && $bruto < 20000) {
     $neto = $bruto * 0.15;
     if ($casilla=="marcada") {
       $netoreducido = $neto * 0.98; 
-      echo "Debera abonar la cantidad de" . $netoreducido . "€.";
+      echo "Debera abonar la cantidad de" .  $netoreducido . "€.";
     }else {
-      echo "Debera abonar la cantidad de" . $neto . "€.";
+      echo "Debera abonar la cantidad de" .  $neto . "€.";
     }
 }
 elseif ($bruto >= 20000 && $bruto < 35000) {
@@ -49,9 +49,9 @@ elseif ($bruto >= 20000 && $bruto < 35000) {
     $neto = $bruto * 0.20;
     if ($casilla=="marcada") {
       $netoreducido = $neto * 0.98; 
-      echo "Debera abonar la cantidad de" . $netoreducido . "€.";
+      echo "Debera abonar la cantidad de" .  $netoreducido . "€.";
     }else {
-      echo "Debera abonar la cantidad de" . $neto . "€.";
+      echo "Debera abonar la cantidad de" .  $neto . "€.";
     }
 }
 elseif ($bruto >= 35000 && $bruto < 60000) {
@@ -59,9 +59,9 @@ elseif ($bruto >= 35000 && $bruto < 60000) {
     $neto = $bruto * 0.30;
     if ($casilla=="marcada") {
       $netoreducido = $neto * 0.98; 
-      echo "Debera abonar la cantidad de" . $netoreducido . "€.";
+      echo "Debera abonar la cantidad de" .  $netoreducido . "€.";
     }else {
-      echo "Debera abonar la cantidad de" . $neto . "€.";
+      echo "Debera abonar la cantidad de" .  $neto . "€.";
     }
 }
 elseif ($bruto > 60000 ) {
@@ -69,9 +69,9 @@ elseif ($bruto > 60000 ) {
     $neto = $bruto * 0.40;
     if ($casilla=="marcada") {
       $netoreducido = $neto * 0.98; 
-      echo "Debera abonar la cantidad de" . $netoreducido . "€.";
+      echo "Debera abonar la cantidad de" .  $netoreducido . "€.";
     }else {
-      echo "Debera abonar la cantidad de" . $neto . "€.";
+      echo "Debera abonar la cantidad de" .  $neto . "€.";
     }
 }
 ?>

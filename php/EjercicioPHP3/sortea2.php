@@ -7,19 +7,34 @@
 <p>Sortea <input type="submit"></p>
 </form>
 <?php
-$premios = $_POST['premios'];
-$participantes = $_POST['participantes'];
+if ($_POST) {
+  $participantes = htmlspecialchars($_POST['participantes']);
+  $numeropremios = htmlspecialchars($_POST['numeropremios']);
+  if (is_numeric($numeropremios)&& $numeropremios>=1 && round($numeropremios,0)==$numeropremios)
+   {
+    $agraciados = explode("\n",$participantes);//coje una cadena string o lo que sea y lo convierte en un array
+    if($numeropremios<sizeof($agraciados)){
+      $premios = array_rand($agraciados,$numeropremios);//Array rand un objeto aleatorio del array y coloca en la variable
+      if (is_array($premios)) {
+        for($indice=0;$indice<sizeof($premios);$indice++){
+            $premio = $premios[$indice];
+            echo "<p> $agraciados[$premio] ha sido premiado/a</p>";
+        }//Con este if sacamos del array de premios todos los ganadores posibles utilizando un bucle para sacar tantos ganadores como premios halla
+      }
+    else {
+        $premiado = rand(0,sizeof($agraciados)-1);
+        echo "<p>$agraciados[$premiado]ha sido premiado/a</p>";
 
-if ($premios > 1 && $participantes > 1) {
+     }
+   }else {
+    echo "<p> Hay más más premios que participantes</p>";
+   }
 
-  for ($x = 0; $x <= $premios; $x++) { 
-    echo "EL participabte numero" .  rand(1 , $participantes) . "Ha ganado. <br>";
+
+  }else {
+    echo "<p> Debe introducir un número positivo mayor que 1</p>";
   }
-
-}else {
-  echo "El numero que has introducido no es válido";
 }
-
 ?>
 </body>
 </html>
