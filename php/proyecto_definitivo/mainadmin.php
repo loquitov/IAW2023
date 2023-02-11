@@ -16,6 +16,23 @@
 <?php
 
   include "db.php";
+  if (array_key_exists("admin",$_COOKIE)) {
+  $_SESSION['admin'] = $_COOKIE['admin'];
+}else {
+  
+
+   if (array_key_exists("dir",$_COOKIE)) {
+     $_SESSION['dir'] = $_COOKIE['dir'];
+    echo "<script>window.location.href = 'https://iawdavidcalvo-com.stackstaging.com/proyecto_definitivo/maindir.php'</script>";
+} else {
+
+    if (!array_key_exists("dir",$_COOKIE)) {
+   $_SESSION['dir'] = $_COOKIE['dir'];
+    echo "<script>window.location.href = 'https://iawdavidcalvo-com.stackstaging.com/proyecto_definitivo/main.php'</script>";
+  }
+ }
+}
+  
 
 
   // Crea la conexión
@@ -50,8 +67,9 @@ $query = "SELECT COUNT(fecha_alta) AS cantidad FROM incidencias;";
   if (!$enlace) {
       echo "Conexión fallida: " . mysqli_connect_error();
   }
+  
   else {
-    $query = "SELECT incidencias.id, planta.planta, aula.aula,incidencias.usuario, incidencias.descripcion, incidencias.fecha_alta, incidencias.fecha_rev, incidencias.fecha_sol, incidencias.comentario FROM incidencias, planta, aula, usuarios WHERE incidencias.planta=planta.id   AND incidencias.fecha_sol=0 AND incidencias.aula=aula.id AND incidencias.usuario=usuarios.id;"; // Realizamos la consulta
+    $query = "SELECT incidencias.id, planta.planta, aula.aula,incidencias.usuario, incidencias.descripcion, incidencias.fecha_alta, incidencias.fecha_rev, incidencias.fecha_sol, incidencias.comentario FROM incidencias, planta, aula, usuarios WHERE incidencias.planta=planta.id    AND incidencias.fecha_sol=0 AND incidencias.aula=aula.id AND incidencias.usuario=usuarios.id;"; // Realizamos la consulta
     $resultado = mysqli_query($enlace,$query); // Guardamos la respuesta de la consulta en resultado
     echo '
     <table  id="table"
@@ -95,8 +113,9 @@ $query = "SELECT COUNT(fecha_alta) AS cantidad FROM incidencias;";
             <td>".$fila["fecha_sol"]."</td>
       
             <td>".$fila["comentario"]."</td>
-            <td class='text-center'>  <a href='visualizar.php?incidencia_id={$fila["id"]}' >  VER</a> </td>
-            </td>
+            <td class='text-center'> <a href='visualizar.php?incidencia_id={$fila["id"]}' class='btn btn-primary'> <i class='bi bi-eye'></i> VER</a> </td>
+            <td class='text-center' > <a href='actualiza.php?editar&incidencia_id={$fila["id"]}' class='btn btn-secondary'><i class='bi bi-pencil'></i> EDITAR</a> </td>
+            <td class='text-center'>  <a href='borraradmin.php?eliminar={$fila["id"]}' class='btn btn-danger'> <i class='bi bi-trash'></i> ELIMINAR</a> </td>
         
           </tr>";
     }
@@ -112,7 +131,8 @@ $query = "SELECT COUNT(fecha_alta) AS cantidad FROM incidencias;";
 
 
 <p><a class="enlaceb" href="https://iawdavidcalvo-com.stackstaging.com/proyecto_definitivo/insert.php" >INSERTAR FILAS</a></p>
-
+<p><a class="enlaceb" href="https://iawdavidcalvo-com.stackstaging.com/proyecto_definitivo/registro.php" >REGISTRAR USUARIOS</a></p>
+<p><a class="enlaceb" href="https://iawdavidcalvo-com.stackstaging.com/proyecto_definitivo/usuarios.php" >ADMINISTRAR USUARIOS</a></p>
 
 
 </body>

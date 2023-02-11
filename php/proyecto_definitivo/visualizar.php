@@ -24,7 +24,7 @@
 
     if ((isset($_GET['incidencia_id'])) ){
     $idincidencia = htmlspecialchars($_GET['incidencia_id']);
-    $query = "SELECT id, planta, aula, descripcion, fecha_alta, fecha_rev, fecha_sol, comentario FROM incidencias WHERE id={$idincidencia} LIMIT 1"; // Realizamos la consulta
+    $query = "SELECT incidencias.id, planta.planta, aula.aula, usuarios.id,incidencias.descripcion, incidencias.fecha_alta, incidencias.fecha_rev, incidencias.fecha_sol, incidencias.comentario FROM incidencias, planta, aula, usuarios WHERE incidencias.planta=planta.id AND incidencias.aula=aula.id AND incidencias.id={$idincidencia} AND incidencias.usuario=usuarios.id LIMIT 1"; // Realizamos la consulta
     $resultado = mysqli_query($enlace,$query); // Guardamos la respuesta de la consulta en resultado
     echo '
     <table class="table table-dark" id="table"
@@ -54,6 +54,8 @@
             <td>".$fila["planta"]."</td>
         
             <td>".$fila["aula"]."</td>
+
+            <td>".$fila["usuario"]."</td>
       
             <td>".$fila["descripcion"]."</td>
       
@@ -76,5 +78,5 @@
 
 ?>
 <div class="container text-center mt-5">
-      <a href="https://iawdavidcalvo-com.stackstaging.com/proyecto_definitivo/main.php" class="btn btn-warning mt-5"> Volver </a>
+      <a href="https://iawdavidcalvo-com.stackstaging.com/proyecto_definitivo/mainadmin.php" class="btn btn-warning mt-5"> Volver </a>
     <div>

@@ -5,26 +5,18 @@ body {
 
 /*sass variables used*/
 /*site container*/
-.wrapper {
+.formulario {
   width: 420px;
   margin: 0 auto;
 }
 
-h1 {
-  text-align: center;
-  padding: 30px 0px 0px 0px;
-  font: 65px Oswald;
-  color: #fff;
-  text-transform: uppercase;
-  text-shadow: #000 0px 1px 5px;
-  margin: 0px;
-}
+
 
 p {
-  font: 13px Open Sans;
-  color: #6e6e6e;
-  text-shadow: #000 0px 1px 5px;
+  font-size: 20px Open Sans;
+  color: #000000;
   margin-bottom: 30px;
+  text-align: center;
 }
 
 .form {
@@ -32,6 +24,8 @@ p {
 }
 
 input[type=text],
+input[type=fullname],
+input[type=email],
 input[type=password] {
   width: 98%;
   padding: 15px 0px 15px 8px;
@@ -52,17 +46,18 @@ input[type=submit] {
   border-radius: 5px;
   outline: none;
   border: none;
+  margin-top: 15px;
   background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#28d2de), to(#1a878f));
   background-image: -webkit-linear-gradient(#28d2de 0%, #1a878f 100%);
   background-image: -moz-linear-gradient(#28d2de 0%, #1a878f 100%);
   background-image: -o-linear-gradient(#28d2de 0%, #1a878f 100%);
   background-image: linear-gradient(#28d2de 0%, #1a878f 100%);
-  font: 14px Oswald;
+  font: 20px Oswald;
   color: #fff;
   text-transform: uppercase;
   text-shadow: #000 0px 1px 5px;
   border: 1px solid #000;
-  opacity: 0.7;
+  
   -webkit-box-shadow: 0 8px 6px -6px rgba(0, 0, 0, 0.7);
   -moz-box-shadow: 0 8px 6px -6px rgba(0, 0, 0, 0.7);
   box-shadow: 0 8px 6px -6px rgba(0, 0, 0, 0.7);
@@ -93,16 +88,35 @@ a.boton{
   border-top: 1px solid rgba(255, 255, 255, 0.8) !important;
   -webkit-box-reflect: below 0px -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(50%, transparent), to(rgba(255, 255, 255, 0.2)));
 }
-
+a.enlaceb{
+  width: 25%;
+  padding: 15px;
+  border-radius: 5px;
+  outline: none;
+  border: none;
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#48e968), to(#3ce152));
+  background-image: -webkit-linear-gradient(#6ade64 0%, #75e54f 100%);
+  background-image: -moz-linear-gradient(#5fe764 0%, #47d167 100%);
+  background-image: -o-linear-gradient(#59f660 0%, #40e34d 100%);
+  background-image: linear-gradient(#59e94c 0%, #50e639 100%);
+  font: 14px Oswald;
+  color: #fff;
+  text-transform: uppercase;
+  text-shadow: #000 0px 1px 5px;
+  border: 1px solid #000;
+  opacity: 0.7;
+  -webkit-box-shadow: 0 8px 6px -6px rgba(0, 0, 0, 0.7);
+  -moz-box-shadow: 0 8px 6px -6px rgba(0, 0, 0, 0.7);
+  box-shadow: 0 8px 6px -6px rgba(0, 0, 0, 0.7);
+  border-top: 1px solid rgba(255, 255, 255, 0.8) !important;
+  -webkit-box-reflect: below 0px -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(50%, transparent), to(rgba(255, 255, 255, 0.2)));
+}
 td{
   padding: 10px;
-  
- 
 }
 
-table{
-  align-items: center;
-  text-align: center;
+table {
+  margin:0 auto;
 }
 
  th{
@@ -136,4 +150,43 @@ input[type=submit]:hover {
   position: fixed;
   right: 3%;
   top: 0px;
+}
+
+img.dolar{
+width: 200px;
+height: 200px;
+margin: 0 auto;
+margin-left: 100px;
+}
+
+h1 {
+  margin: 0 auto;
+  font: 25px;
+  margin-bottom: 12px;
+  margin-left: 25px;
+}
+
+.volver{
+  margin: 0 auto;
+   width: 5%;
+  padding: 15px;
+  border-radius: 5px;
+  outline: none;
+  border: none;
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#e14216), to(#b63a11));
+  background-image: -webkit-linear-gradient(#eb4b2f 0%, #d52121 100%);
+  background-image: -moz-linear-gradient(#de4628 0%, #e34c2d 100%);
+  background-image: -o-linear-gradient(#de3128 0%, #a81d1d 100%);
+  background-image: linear-gradient(#de3d28 0%, #ca2f1a 100%);
+  font: 14px Oswald;
+  color: #fff;
+  text-transform: uppercase;
+  text-shadow: #000 0px 1px 5px;
+  border: 1px solid #000;
+  opacity: 0.7;
+  -webkit-box-shadow: 0 8px 6px -6px rgba(0, 0, 0, 0.7);
+  -moz-box-shadow: 0 8px 6px -6px rgba(0, 0, 0, 0.7);
+  box-shadow: 0 8px 6px -6px rgba(0, 0, 0, 0.7);
+  border-top: 1px solid rgba(255, 255, 255, 0.8) !important;
+  -webkit-box-reflect: below 0px -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(50%, transparent), to(rgba(255, 255, 255, 0.2)));
 }
