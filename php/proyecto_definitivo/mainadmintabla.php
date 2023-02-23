@@ -99,9 +99,10 @@ $query = "SELECT COUNT(fecha_alta) AS cantidad FROM incidencias;";
       echo "Conexión fallida: " . mysqli_connect_error();
   }
 
-  else  {
+ else {
+
  
- $query = "SELECT  usuarios.username,usuarios.id , count(fecha_sol) AS cantidad FROM incidencias, usuarios WHERE  incidencias.fecha_sol=0  AND incidencias.usuario=usuarios.id GROUP BY usuarios.username"; // Realizamos la consulta
+ $query = "SELECT  planta.planta, usuarios.id, count(fecha_sol) AS cantidad FROM incidencias, usuarios, planta WHERE  incidencias.fecha_sol=0  AND incidencias.usuario=usuarios.id AND incidencias.planta=planta.id GROUP BY planta.planta"; // Realizamos la consulta
     $resultado = mysqli_query($enlace,$query); // Guardamos la respuesta de la consulta en resultado
     echo '
     <table  id="table"
@@ -110,7 +111,7 @@ $query = "SELECT COUNT(fecha_alta) AS cantidad FROM incidencias;";
     data-url="json/data1.json">
     <thead>
       <tr>
-      <th scope="col">Username</th>
+      <th scope="col">Planta</th>
       <th scope="col">ID</th>
       <th scope="col">Incidencias</th>
       <th scope="col" colspan="3" class="text-center">Acciones</th>
@@ -122,7 +123,7 @@ $query = "SELECT COUNT(fecha_alta) AS cantidad FROM incidencias;";
         while($fila = $resultado->fetch_assoc())
             echo "<tbody><tr>
 
-            <td>".$fila["username"]."</td>
+            <td>".$fila["planta"]."</td>
 
             <td>".$fila["id"]."</td>
 
@@ -133,7 +134,8 @@ $query = "SELECT COUNT(fecha_alta) AS cantidad FROM incidencias;";
 </tr>";
 
     }
-    echo "</tbody></table><br><p><a href='mainadmintabla.php?' class='boton'>FILTRAR POR TABLAS</a></p>";
+    echo "</tbody></table><p><a href='mainadmin.php?' class='boton'>FILTRAR POR USUARIOS</a></p>";
+     echo "</tbody></table> <br> <p><a href='mainadmin.php?' class='boton'>Volver</a></p>";
     echo "</tbody></table> <br> <p><a href='login.php?Logout=1' class='boton'>Cerrar sesión</a></p>";
   }
      
@@ -143,9 +145,11 @@ $query = "SELECT COUNT(fecha_alta) AS cantidad FROM incidencias;";
 ?>
 
 
+
+
 <p><a class="enlaceb" href="https://iawdavidcalvo-com.stackstaging.com/proyecto_definitivo/insert.php" >INSERTAR FILAS</a></p>
 <br>
-<p><a class="enlaceb" href="https://iawdavidcalvo-com.stackstaging.com/proyecto_definitivo/correo.php" >  ENVIAR CORREO</a></p>
+<p><a class="enlaceb" href="https://iawdavidcalvo-com.stackstaging.com/proyecto_definitivo/correo.php" >ENVIAR CORREO</a></p>
 <br>
 <p><a class="enlaceb" href="https://iawdavidcalvo-com.stackstaging.com/proyecto_definitivo/registro.php" >REGISTRAR USUARIOS</a></p>
 <br>

@@ -1,5 +1,5 @@
 <?php 
-
+include "conexion.php";
 include("db.php");
 
 if (array_key_exists("admin",$_COOKIE)) {
@@ -39,7 +39,7 @@ if(isset($_GET['incidencia_id']))
         {
           $id = $fila['id'];                
           $planta = $fila['planta'];        
-          $aula = $fila['aula'];         
+          $aula = $fila['aula'];       
           $descripcion = $fila['descripcion'];        
           $fecha_de_alta = $fila['fecha_alta'];        
           $fecha_de_revision = $fila['fecha_rev'];        

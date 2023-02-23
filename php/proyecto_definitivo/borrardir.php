@@ -1,7 +1,7 @@
 <?php 
 
     include "db.php";
-
+include "conexion.php";
 
     if (array_key_exists("dir",$_COOKIE)) {
   $_SESSION['dir'] = $_COOKIE['dir'];
@@ -17,10 +17,10 @@ echo "<script>window.location.href = 'https://iawdavidcalvo-com.stackstaging.com
     }
     else {
 
-    if(isset($_GET['eliminar']))
+    if(isset($_GET['confirmar']))
      {
       
-         $id= htmlspecialchars($_GET['eliminar']);
+         $id= htmlspecialchars($_GET['confirmar']);
          $query = "DELETE FROM incidencias WHERE incidencias.id = {$id}"; 
          $resultado= mysqli_query($enlace, $query);
          echo "<script>window.location.href = 'https://iawdavidcalvo-com.stackstaging.com/proyecto_definitivo/maindir.php';</script>";

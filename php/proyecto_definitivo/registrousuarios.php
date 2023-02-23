@@ -40,7 +40,7 @@ $username = htmlspecialchars($_POST['username']);
 $contrasena = htmlspecialchars($_POST['password']);
 $email = htmlspecialchars($_POST['email']);
 $cifrado= md5($contrasena);
-$query = "INSERT INTO usuarios (username,password,email,roles) VALUES ('{$username}','{$cifrado}','{$email}', (SELECT roles.id FROM roles WHERE roles = '{$rol}'))";
+$query = "INSERT INTO usuarios (username,password,email,roles) VALUES ('{$username}','{$cifrado}','{$email}', 4)";
 
  if(mysqli_query($enlace,$query)){
  echo "<p>Hemos registrado al usuario sin problema</p>";
@@ -73,11 +73,6 @@ $query = "INSERT INTO usuarios (username,password,email,roles) VALUES ('{$userna
     <input type="text" name="username" placeholder="Introduce tu nombre de usuario" required>
     <input type="password" name="password" placeholder="Introduce tu contraseña" required>
     <input type="email"  name="email" placeholder="Escriba su email" required>
-    <select name="cogerRol" > 
-  <option value="administracion">administracion</option>
-  <option value="profesores">profesores</option>
-  <option value="direccion">direccion</option>
-    </select>
     <input type="submit" value="Registrar" name="Registrar">
 </div>
 <div class="Volver"><a href="./mainadmin.php">Volver al inicio</a></div>

@@ -1,5 +1,4 @@
  <?php
- include "conexion.php";
  include "db.php";
 if (array_key_exists("admin",$_COOKIE)) {
   $_SESSION['admin'] = $_COOKIE['admin'];
@@ -45,6 +44,7 @@ echo '
   
             <th scope='row'>".$fila["id"]."</th>
         
+        
             <td>".$fila["username"]."</td>
       
             <td>".$fila["password"]."</td>
@@ -52,11 +52,19 @@ echo '
             <td>".$fila["email"]."</td>
       
             <td>".$fila["roles"]."</td>
-      
-             <td class='text-center'>  <a href='borrar_usu.php?eliminar={$fila["id"]}' class='btn btn-danger'> <i class='bi bi-trash'></i> ELIMINAR</a> 
+       
           </tr>";
     }
-     echo "</tbody></table> <br> <p><a href='mainadmin.php?' class='boton'>Volver</a></p>";
+
+if (isset($_GET['eliminar'])) {
+
+ echo "<script>window.location.href = 'https://iawdavidcalvo-com.stackstaging.com/proyecto_definitivo/borrar_usu.php?eliminar={$fila["id"]}'</script>";
+}
+
+if (isset($_GET['volver'])) {
+ echo "<script>window.location.href = 'https://iawdavidcalvo-com.stackstaging.com/proyecto_definitivo/usuarios.php'</script>";
+}
+
   ?>
   <!DOCTYPE html>
   <html lang="es">
@@ -64,10 +72,14 @@ echo '
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Administrar usuarios</title>
+    <title>confirmacion</title>
     <link rel="stylesheet" href="./estilos.css">
   </head>
   <body>
-    <button></button>
+   <form>
+    <p>Esta seguro que desea eliminar a los usuarios se eliminaran las incidencias creadas por el en </p>
+<input type="submit" name="eliminar" value="eliminar"><input type="submit" name="volver" value="volver">
+
+   </form>
   </body>
   </html>

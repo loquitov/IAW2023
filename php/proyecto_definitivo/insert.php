@@ -1,6 +1,6 @@
 <?php 
     include "db.php";
-
+include "conexion.php";
 
     if (mysqli_connect_error()) {
         die("Error en la conexión");
@@ -21,7 +21,7 @@
       
 //Al no saber como se encuentran los campos en la base de datos lo ponemos todos en mayusculas para asegurar el exito de la consulta
 
-                $query=" INSERT INTO incidencias (planta, aula,usuario, descripcion, fecha_alta, fecha_rev, fecha_sol, comentario) values ((SELECT planta.id from planta WHERE UPPER(planta)='{$plantamayus}'), (SELECT aula.id from aula where UPPER(aula)='{$aulamayus}'),'{$id}', '{$descripcion}', '{$fecha_de_alta}', '{$fecha_de_revision}', '{$fecha_de_solucion}', '{$comentario}');";
+                $query=" INSERT INTO incidencias (planta, aula,usuario, descripcion, fecha_alta, fecha_rev, fecha_sol, comentario) values ((SELECT planta.id from planta WHERE UPPER(planta)='{$plantamayus}'), (SELECT aula.id from aula where UPPER(aula)='{$aulamayus}'), (SELECT usuarios.id from usuarios where usuarios.id='{$id}'), '{$descripcion}', '{$fecha_de_alta}', '{$fecha_de_revision}', '{$fecha_de_solucion}', '{$comentario}');";
                 
                 $sentencia = mysqli_query($enlace,$query);
 
@@ -51,32 +51,40 @@
 <form method="post" class="form">
   <div class="mb-3">
     <label for="exampleInputEmail1" class="form-label">Planta</label>
-    <input type="text" class="name" placeholder="Planta" id="exampleInputEmail1" aria-describedby="emailHelp" name="cogerPlanta" required>
+    <select class="name" placeholder="Planta" id="exampleInputEmail1" aria-describedby="emailHelp" name="cogerPlanta" required>
+<option value="Primera">Primera</option>
+<option value="Primera">Segunda</option>
+    </select>
   </div>
+  <br>
   <div class="mb-3">
     <label for="exampleInputEmail1" class="form-label">Aula</label>
-    <input type="text" class="name" placeholder="Aula" id="exampleInputEmail1" aria-describedby="emailHelp" name="cogerAula" required>  
+    <select class="name"  id="exampleInputEmail1" aria-describedby="emailHelp" name="cogerAula" required>
+<option value="1A">1A</option>
+<option value="2A">2A</option>
+    </select>  
   </div>
-  <div class="mb-3">
-    <label for="exampleInputEmail1" class="name">Usuario</label>
-    <input type="text" class="name" placeholder="Usuario" id="exampleInputEmail1" aria-describedby="emailHelp" name="cogerUsuario" >  
-  </div>
+  <br>
   <div class="mb-3">
     <label for="exampleInputEmail1" class="name">Descripción</label>
     <input type="text" class="name" placeholder="Descripción" id="exampleInputEmail1" aria-describedby="emailHelp" name="cogerDescripcion" required>
   </div>
+  <br>
   <div class="mb-3">
     <label for="exampleInputEmail1" class="name">Fecha de alta</label>
     <input type="date" class="name" placeholder="Fecha de alta" id="exampleInputEmail1" aria-describedby="emailHelp" name="cogerFecha_alta" required>
   </div>
+  <br>
   <div class="mb-3">
     <label for="exampleInputEmail1" class="name">Fecha de revisión</label>
     <input type="date" class="name" placeholder="Fecha de revisión" id="exampleInputEmail1" aria-describedby="emailHelp" name="cogerFecha_rev" required>
   </div>
+  <br>
   <div class="mb-3">
     <label for="exampleInputEmail1" class="name">Fecha de resolución</label>
     <input type="date" class="name" placeholder="Fecha de resolución" id="exampleInputEmail1" aria-describedby="emailHelp" name="cogerFecha_sol" >
   </div>
+  <br>
   <div class="mb-3">
     <label for="exampleInputEmail1" class="name">Comentario</label>
     <input type="text" class="name" placeholder="Comentario" id="exampleInputEmail1" name="cogerComentario">

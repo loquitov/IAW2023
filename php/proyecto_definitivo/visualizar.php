@@ -10,7 +10,7 @@
   <body>
     
 <?php
-
+include "conexion.php";
   include "db.php";
 
   // Crea la conexión

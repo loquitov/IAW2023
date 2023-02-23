@@ -16,22 +16,9 @@
 <?php
 include "conexion.php";
   include "db.php";
-  if (array_key_exists("admin",$_COOKIE)) {
-  $_SESSION['admin'] = $_COOKIE['admin'];
-}else {
+
   
 
-   if (array_key_exists("dir",$_COOKIE)) {
-     $_SESSION['dir'] = $_COOKIE['dir'];
-    echo "<script>window.location.href = 'https://iawdavidcalvo-com.stackstaging.com/proyecto_definitivo/maindir.php'</script>";
-} else {
-
-    if (!array_key_exists("dir",$_COOKIE)) {
-   $_SESSION['dir'] = $_COOKIE['dir'];
-    echo "<script>window.location.href = 'https://iawdavidcalvo-com.stackstaging.com/proyecto_definitivo/main.php'</script>";
-  }
- }
-}      
 
   // Crea la conexión
   $enlace = mysqli_connect($servidor, $usuario, $password, $bd);
@@ -97,11 +84,16 @@ $query = "SELECT COUNT(fecha_alta) AS cantidad FROM incidencias;";
   // Compruebo si la conexión funciona y si hay enlace.
   if (!$enlace) {
       echo "Conexión fallida: " . mysqli_connect_error();
-  }
+  }else {
+   
 
-  else  {
+  
  
- $query = "SELECT  usuarios.username,usuarios.id , count(fecha_sol) AS cantidad FROM incidencias, usuarios WHERE  incidencias.fecha_sol=0  AND incidencias.usuario=usuarios.id GROUP BY usuarios.username"; // Realizamos la consulta
+if (isset($_GET['incidencia'])) {
+
+
+$id =htmlspecialchars($_GET['incidencia']);
+   $query = "SELECT incidencias.id, planta.planta, aula.aula,  incidencias.descripcion, incidencias.fecha_alta, incidencias.fecha_rev, incidencias.fecha_sol, incidencias.comentario FROM incidencias, planta, aula, usuarios WHERE incidencias.planta=planta.id AND incidencias.fecha_sol=0 AND incidencias.aula=aula.id AND incidencias.usuario=usuarios.id AND usuarios.id={$id}"; // Realizamos la consulta
     $resultado = mysqli_query($enlace,$query); // Guardamos la respuesta de la consulta en resultado
     echo '
     <table  id="table"
@@ -110,9 +102,14 @@ $query = "SELECT COUNT(fecha_alta) AS cantidad FROM incidencias;";
     data-url="json/data1.json">
     <thead>
       <tr>
-      <th scope="col">Username</th>
-      <th scope="col">ID</th>
-      <th scope="col">Incidencias</th>
+       <th scope="col">ID</th>
+      <th scope="col">Planta</th>
+      <th scope="col">Aula</th>
+      <th scope="col">Descripción</th>
+      <th scope="col">Fecha de alta</th>
+      <th scope="col">Fecha de revisión</th>
+      <th scope="col">Fecha de resolución</th>
+      <th scope="col">Comentario</th>
       <th scope="col" colspan="3" class="text-center">Acciones</th>
       </tr>
     </thead>
@@ -121,35 +118,41 @@ $query = "SELECT COUNT(fecha_alta) AS cantidad FROM incidencias;";
         
         while($fila = $resultado->fetch_assoc())
             echo "<tbody><tr>
+  
+        <td>".$fila["id"]."</td>
 
-            <td>".$fila["username"]."</td>
-
-            <td>".$fila["id"]."</td>
-
-          <td>".$fila["cantidad"]."</td>
+            <td>".$fila["planta"]."</td>
+        
+            <td>".$fila["aula"]."</td>
       
-           
-            <td class='text-center'> <a href='mainadmin2.php?incidencia={$fila["id"]}' class='btn btn-primary'> <i class='bi bi-eye'></i> VER TODAS LAS INCIDENCIAS</a> </td>
-</tr>";
-
+            <td>".$fila["descripcion"]."</td>
+      
+            <td>".$fila["fecha_alta"]."</td>
+      
+            <td>".$fila["fecha_rev"]."</td>
+      
+            <td>".$fila["fecha_sol"]."</td>
+      
+            <td>".$fila["comentario"]."</td>
+            <td class='text-center'> <a href='visualizar.php?incidencia_id={$fila["id"]}' class='btn btn-primary'> <i class='bi bi-eye'></i> VER</a> </td>
+            <td class='text-center' > <a href='actualiza.php?editar&incidencia_id={$fila["id"]}' class='btn btn-secondary'><i class='bi bi-pencil'></i> EDITAR</a> </td>
+        
+          </tr>";
     }
-    echo "</tbody></table><br><p><a href='mainadmintabla.php?' class='boton'>FILTRAR POR TABLAS</a></p>";
-    echo "</tbody></table> <br> <p><a href='login.php?Logout=1' class='boton'>Cerrar sesión</a></p>";
   }
-     
+   echo "</tbody></table> <br> <p><a href='mainadmin.php?' class='boton'>Volver</a></p>";
+    echo "</tbody></table> <br> <p><a href='login.php?Logout=1' class='boton'>Cerrar sesión</a></p>";
+}
     mysqli_close($enlace);
-
+  
 
 ?>
+
 
 
 <p><a class="enlaceb" href="https://iawdavidcalvo-com.stackstaging.com/proyecto_definitivo/insert.php" >INSERTAR FILAS</a></p>
 <br>
 <p><a class="enlaceb" href="https://iawdavidcalvo-com.stackstaging.com/proyecto_definitivo/correo.php" >  ENVIAR CORREO</a></p>
-<br>
-<p><a class="enlaceb" href="https://iawdavidcalvo-com.stackstaging.com/proyecto_definitivo/registro.php" >REGISTRAR USUARIOS</a></p>
-<br>
-<p><a class="enlaceb" href="https://iawdavidcalvo-com.stackstaging.com/proyecto_definitivo/usuarios.php" >ADMINISTRAR USUARIOS</a></p>
 
 
 </body>

@@ -79,6 +79,9 @@
       
     </div>
     <input type="submit" class="submit" value="Iniciar Sesion" name=inicio>
+    <br>
+    <br>
+    <a href='registrousuarios.php?' class='boton' weight="100px">Registrarse</a>
   </form>
 </div>
 <p class="optimize">
